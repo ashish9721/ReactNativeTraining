@@ -3,9 +3,6 @@ import { View, FlatList, Text, TextInput,StyleSheet,ActivityIndicator ,SafeAreaV
 import axios from 'axios'
 import Card from './card3'
 export default class ApiPost extends React.Component {
-    static navigationOptions = {
-        title: 'Task3',
-      };
 
 
     constructor() {

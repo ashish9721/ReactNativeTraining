@@ -2,9 +2,7 @@ import React from 'react';
 import {View,StyleSheet} from 'react-native';
 
 export default class Task10 extends React.Component {
-    static navigationOptions = {
-        title: 'Task10',
-      };
+    
   render() {
     return (
       <View style={Styles.view} >

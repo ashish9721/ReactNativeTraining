@@ -7,9 +7,7 @@ import {
 import ImagePicker from 'react-native-image-crop-picker';
 
 export default class Task6 extends React.Component{
-    static navigationOptions = {
-        title: 'Task6',
-      };
+  
     constructor(){
         super()
         this.state={

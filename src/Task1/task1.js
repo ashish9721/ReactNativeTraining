@@ -14,9 +14,7 @@ export const Header = () => {
 
 
 export default class Task1 extends React.Component {
-    static navigationOptions = {
-        title: 'Task1',
-      };
+   
     render() {
         return (
             <View style={styles.container}>

@@ -2,10 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, TextInput, SafeAreaView } from 'react-native';
 import Card from './card7'
 export default class Task7 extends React.Component {
-    static navigationOptions = {
-        title: 'Task7',
-      };
-
+    
     constructor(props) {
         super(props)
         this.state = {

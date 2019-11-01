@@ -15,9 +15,7 @@ import Card4 from './card4';
 
 
 export default class Task4 extends React.Component {
-    static navigationOptions = {
-        title: 'Task4',
-      };
+    
     render() {
         return (
             <View>

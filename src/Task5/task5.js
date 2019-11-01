@@ -6,9 +6,7 @@ import {Footer} from './footertask5'
 import {FloatingButton} from './floatingbuttontask5'
  export default class Task5 extends React.Component{
 
-    static navigationOptions = {
-        title: 'Gallery',
-      };
+   
     constructor(){
         super()
         this.state={

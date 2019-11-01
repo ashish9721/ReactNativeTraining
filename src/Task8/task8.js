@@ -9,9 +9,7 @@ import ImageCard from './imagecard';
 
 
 export default class Task8 extends React.Component {
-    static navigationOptions = {
-        title: 'Task8',
-      };
+    
     constructor() {
         super();
         this.state = {

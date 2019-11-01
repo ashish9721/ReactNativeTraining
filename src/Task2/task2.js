@@ -4,9 +4,7 @@ import axios from 'axios'
 import Card from './card'
 export default class Task2 extends React.Component {
 
-    static navigationOptions = {
-        title: 'Task2',
-      };
+    
 
     constructor() {
         super()

@@ -1,9 +1,7 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Button} from 'react-native';
 export default class Task9 extends React.Component {
-  static navigationOptions = {
-    title: 'Task9',
-  };
+  
   render() {
     return (
       <View>
