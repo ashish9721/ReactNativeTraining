@@ -19,6 +19,8 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - Permission-PhotoLibrary (2.0.3):
+    - RNPermissions
   - QBImagePickerController (3.4.0)
   - RCTRequired (0.61.3)
   - RCTTypeSafety (0.61.3):
@@ -225,6 +227,8 @@ PODS:
     - React-Core
     - React-RCTImage
     - RSKImageCropper
+  - RNPermissions (2.0.3):
+    - React
   - RNReanimated (1.4.0):
     - React
   - RNScreens (2.0.0-alpha.7):
@@ -238,6 +242,7 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - Permission-PhotoLibrary (from `../node_modules/react-native-permissions/ios/PhotoLibrary.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -262,6 +267,7 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -283,6 +289,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Permission-PhotoLibrary:
+    :path: "../node_modules/react-native-permissions/ios/PhotoLibrary.podspec"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -325,6 +333,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -339,6 +349,7 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: f7be9bcc5ce259f7c39509f3f4caf59020d11d4c
   Folly: 30e7936e1c45c08d884aa59369ed951a8e68cf51
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
+  Permission-PhotoLibrary: 23a656a9694dfba3f8ae1cbc0f33c67b35db0065
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
   RCTRequired: a72523286ea3381f97b28d87529c265baad3ad7d
   RCTTypeSafety: e3cc0537400222250f0be37bd69f4b339d3c0a0f
@@ -361,11 +372,12 @@ SPEC CHECKSUMS:
   ReactCommon: c2c63d9290b422ca6ad5b3663073a015dd892ae9
   RNGestureHandler: a4ddde1ffc6e590c8127b8b7eabfdade45475c74
   RNImageCropPicker: e1d8c3381e5b05a1bdcd13ea57a4f1c020a09cef
+  RNPermissions: 9e437a90de84a5402ff689d4da233730b81556c2
   RNReanimated: b2ab0b693dddd2339bd2f300e770f6302d2e960c
   RNScreens: 2f53466846305189a0cfd1745f26b6ca141b3a08
   RSKImageCropper: a446db0e8444a036b34f3c43db01b2373baa4b2a
   Yoga: 02036f6383c0008edb7ef0773a0e6beb6ce82bd1
 
-PODFILE CHECKSUM: 995b8e9bee902832acef89931fb44b37e407ee85
+PODFILE CHECKSUM: f4caef3dd14022d551dc00407305f2512f37f1da
 
 COCOAPODS: 1.7.5

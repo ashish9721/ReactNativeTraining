@@ -23,10 +23,31 @@ import Task7 from './src/Task7/task7';
 import Task8 from './src/Task8/task8';
 import Task9 from './src/Task9/task9';
 import Task10 from './src/Task10/task10';
+import Edit from './edit';
 
 export class App extends React.Component {
 
- 
+  constructor() {
+    super()
+    this.state = {
+      firstname: 'Aashish',
+      lastname: 'Sharma',
+      imagepath: '',
+      isloading: false,
+    }
+  }
+
+  updatemethod = (fname, lname, image) => {
+    console.warn(fname)
+    console.warn(lname)
+    this.setState({
+      firstname: fname,
+      lastname: lname,
+      imagepath: image
+    })
+
+  }
+
   render() {
 
 
@@ -34,75 +55,87 @@ export class App extends React.Component {
       <ImageBackground style={{ width: "100%", height: "100%", flex: 1 }} source={require('./assets/ocean.jpg')}>
         <View style={styles.container}>
           {/* <Task1/> */}
-        
-          <View style={styles.headercontainer}>
-            <Text style={styles.heaedertext}>Home Screen</Text>
+          <View style={styles.usercontainer}>
+            <Image onLoad={() => this.setState({ isloading: true })}
+              style={{ width: 100, height: 100, borderRadius: 50, borderColor: 'white', borderWidth: 3, margin: 10 }} source={{ uri: this.state.imagepath }} />
+            {!this.state.isloading && <Image source={require('./assets/person-white.png')} style={{ position: 'absolute', marginLeft: 25, marginTop: 10, width: 100, height: 100 }} />}
+            <View style={styles.headercontainer}>
+              <Text style={styles.heaedertext}> {this.state.firstname} {this.state.lastname} </Text>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Edit', { firstnameofuser: this.state.firstname, lastnameofuser: this.state.lastname, updatemethod: this.updatemethod })}>
+                <View style={styles.btnstyle}>
+                  <Text style={{ color: 'white', fontSize: 25 }}> Edit Button</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
           </View>
+          <ScrollView showsVerticalScrollIndicator='false' style={{ height:300, width: 400, padding: 10, borderRadius: 20, borderColor: 'ghostwhite', borderWidth: 2, paddingLeft: 50,marginBottom:20,}} contentInset={{top:10,left:0,right:0,bottom:50}}>
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task1')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task One</Text>
-            </View>
 
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task1')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task One</Text>
+              </View>
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task2')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Two</Text>
-            </View>
+            </TouchableOpacity>
 
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task2')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Two</Text>
+              </View>
 
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task3')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Three</Text>
-            </View>
+            </TouchableOpacity>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task4')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Four</Text>
-            </View>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task3')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Three</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task5')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Five</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task4')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Four</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task6')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Six</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task5')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Five</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task7')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Seven</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task6')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Six</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task8')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Eight</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task7')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Seven</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task9')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Nine</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task8')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Eight</Text>
+              </View>
 
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('Task10')}>
-            <View style={styles.btnstyle}>
-              <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Ten</Text>
-            </View>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task9')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Nine</Text>
+              </View>
 
-          </TouchableOpacity>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Task10')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Ten</Text>
+              </View>
 
-        
+            </TouchableOpacity>
+
+          </ScrollView>
+
         </View>
       </ImageBackground>)
   }
@@ -111,7 +144,7 @@ export class App extends React.Component {
 const AppNavigator = createStackNavigator({
   Home: {
     screen: App,
-    navigationOptions: ({navigation})=> ({
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Home",
       headerStyle: {
@@ -134,22 +167,22 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task1') }}
+            onPress={() => { navigation.navigate('Task1') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
               style={styles.imageinfostyle}
             />
           </TouchableOpacity>
-
         </View>
       ),
     })
   },
+  Edit: { screen: Edit },
 
   Task1: {
-    screen: Task1, 
-    navigationOptions: ({navigation})=> ({
+    screen: Task1,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task1",
       headerStyle: {
@@ -172,7 +205,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task2') }}
+            onPress={() => { navigation.navigate('Task2') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -184,8 +217,9 @@ const AppNavigator = createStackNavigator({
       ),
     })
   },
-  Task2: { screen: Task2,
-    navigationOptions: ({navigation})=> ({
+  Task2: {
+    screen: Task2,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task2",
       headerStyle: {
@@ -208,7 +242,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task3') }}
+            onPress={() => { navigation.navigate('Task3') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -218,9 +252,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    }) },
-  Task3: { screen: Task3 ,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task3: {
+    screen: Task3,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task3",
       headerStyle: {
@@ -243,7 +279,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task4') }}
+            onPress={() => { navigation.navigate('Task4') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -253,9 +289,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    })},
-  Task4: { screen: Task4 ,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task4: {
+    screen: Task4,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task4",
       headerStyle: {
@@ -278,7 +316,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task5') }}
+            onPress={() => { navigation.navigate('Task5') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -288,9 +326,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    })},
-  Task5: { screen: Task5,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task5: {
+    screen: Task5,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Gallery",
       headerStyle: {
@@ -313,7 +353,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task6') }}
+            onPress={() => { navigation.navigate('Task6') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -323,9 +363,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    }) },
-  Task6: { screen: Task6,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task6: {
+    screen: Task6,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task6",
       headerStyle: {
@@ -348,7 +390,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task7') }}
+            onPress={() => { navigation.navigate('Task7') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -358,9 +400,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    }) },
-  Task7: { screen: Task7 ,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task7: {
+    screen: Task7,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task7",
       headerStyle: {
@@ -383,7 +427,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task8') }}
+            onPress={() => { navigation.navigate('Task8') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -393,9 +437,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    })},
-  Task8: { screen: Task8 ,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task8: {
+    screen: Task8,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task8",
       headerStyle: {
@@ -418,7 +464,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task9') }}
+            onPress={() => { navigation.navigate('Task9') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -428,9 +474,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    })},
-  Task9: { screen: Task9,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task9: {
+    screen: Task9,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task9",
       headerStyle: {
@@ -453,7 +501,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Task10') }}
+            onPress={() => { navigation.navigate('Task10') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -463,9 +511,11 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    }) },
-  Task10: { screen: Task10,
-    navigationOptions: ({navigation})=> ({
+    })
+  },
+  Task10: {
+    screen: Task10,
+    navigationOptions: ({ navigation }) => ({
       // title screen navigation option
       title: "Task10",
       headerStyle: {
@@ -488,7 +538,7 @@ const AppNavigator = createStackNavigator({
             />
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => {navigation.navigate('Home') }}
+            onPress={() => { navigation.navigate('Home') }}
             style={styles.rightButtonStyle}>
             <Image
               source={require('./assets/rightarrow.png')}
@@ -498,7 +548,8 @@ const AppNavigator = createStackNavigator({
 
         </View>
       ),
-    }) }
+    })
+  }
 },
   {
     initialRouteName: 'Home',
@@ -535,7 +586,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heaedertext: {
-    fontSize: 65,
+    fontSize: 50,
     color: 'white',
     tintColor: 'black'
   },
@@ -549,6 +600,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 25
   },
+  usercontainer: {
+    margin: 10,
+    alignItems: 'center',
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: 'ghostwhite',
+    width: 400,
+    height: 280
+  },
   buttontextstyle: {
     color: 'ghostwhite',
     fontSize: 20
@@ -560,8 +620,7 @@ const styles = StyleSheet.create({
     elevation: 20,
     borderRadius: 40,
     borderWidth: 1,
-    borderColor: 'black',
-    padding: 8,
+    borderColor: 'white',
     shadowOpacity: 0.7,
     shadowColor: 'white',
     shadowOffset: { width: 9, height: 5 },

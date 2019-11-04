@@ -53,7 +53,7 @@ export default class Task4 extends React.Component {
             </ScrollView>
             </SafeAreaView>
             {/* <FloatingBtn/> */}
-            <View style={{bottom:200}}>
+            <View style={{bottom:140}}>
             <TabBar/>
             </View>
             
