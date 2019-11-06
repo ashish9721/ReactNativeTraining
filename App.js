@@ -31,6 +31,11 @@ import Task9 from './src/Task9/task9';
 import Task10 from './src/Task10/task10';
 import Edit from './edit';
 import stringsOfApp from './src/translations/local';
+import Splash from './src/splashAndAll/splash';
+import Login from './src/splashAndAll/login';
+import SignUp from './src/splashAndAll/signup'
+import Dashboard from './src/splashAndAll/dashboard';
+import NewDashboard from './src/splashAndAll/newdashboard';
 
 export class App extends React.Component {
 
@@ -70,6 +75,13 @@ export class App extends React.Component {
                   <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('editinfo')}</Text>
                 </View>
               </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Splash')}>
+              <View style={styles.btnstyle}>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('Splash')}</Text>
+              </View>
+
+            </TouchableOpacity>
+
             </View>
           </View>
           <ScrollView style={{ height: 300, width: '95%', padding: 10, borderRadius: 20, borderColor: 'ghostwhite', borderWidth: 2, paddingLeft: 50, marginBottom: 20, }} contentInset={{ top: 10, left: 0, right: 0, bottom: 50 }}>
@@ -549,12 +561,49 @@ const AppNavigator = createStackNavigator({
         </View>
       ),
     })
-  }
-},
-  {
-    initialRouteName: 'Home',
-    headerMode: 'screen',
-    defaultNavigationOptions: {
+  },
+  Splash: {
+    screen: Splash,
+    // navigationOptions: ({ navigation }) => ({
+    //   // title screen navigation option
+    //   title: "Splash",
+    //   headerStyle: {
+    //     //#395B7C    #141F39
+    //     backgroundColor: '#395B7C',
+    //   },
+    //   headerTintColor: 'ghostwhite',
+    //   headerTitleStyle: {
+    //     fontWeight: 'bold',
+    //     fontSize: 22
+    //   },
+    //   headerRight: () => (
+    //     <View style={{ flexDirection: 'row', }}>
+    //       <TouchableOpacity
+    //         onPress={() => alert('This is a button!')}
+    //         style={styles.rightButtonStyle}>
+    //         <Image
+    //           source={require('./assets/infoicon.png')}
+    //           style={styles.imageinfostyle}
+    //         />
+    //       </TouchableOpacity>
+    //       <TouchableOpacity
+    //         onPress={() => { navigation.navigate('Home') }}
+    //         style={styles.rightButtonStyle}>
+    //         <Image
+    //           source={require('./assets/rightarrow.png')}
+    //           style={styles.imageinfostyle}
+    //         />
+    //       </TouchableOpacity>
+
+    //     </View>
+    //   ),
+    // })
+  },
+  Login: {
+    screen: Login,
+    navigationOptions: ({ navigation }) => ({
+      // title screen navigation option
+      title: "Login",
       headerStyle: {
         //#395B7C    #141F39
         backgroundColor: '#395B7C',
@@ -565,18 +614,168 @@ const AppNavigator = createStackNavigator({
         fontSize: 22
       },
       headerRight: () => (
-        <TouchableOpacity
-          onPress={() => alert('This is a button!')}
-          style={styles.rightButtonStyle}>
-          <Image
-            source={require('./assets/rightarrow.png')}
-            style={styles.imageinfostyle}
-          />
-        </TouchableOpacity>
+        <View style={{ flexDirection: 'row', }}>
+          <TouchableOpacity
+            onPress={() => alert('This is a button!')}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/infoicon.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Home') }}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/rightarrow.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
 
+        </View>
       ),
-    },
-  });
+    })
+  },
+  
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: ({ navigation }) => ({
+      // title screen navigation option
+      title: "SignUp",
+      headerStyle: {
+        //#395B7C    #141F39
+        backgroundColor: '#395B7C',
+      },
+      headerTintColor: 'ghostwhite',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 22
+      },
+      headerRight: () => (
+        <View style={{ flexDirection: 'row', }}>
+          <TouchableOpacity
+            onPress={() => alert('This is a button!')}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/infoicon.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Home') }}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/rightarrow.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+
+        </View>
+      ),
+    })
+  },
+  Dashboard: {
+    screen: Dashboard,
+    navigationOptions: ({ navigation }) => ({
+      // title screen navigation option
+      title: "Dashboard",
+      headerStyle: {
+        //#395B7C    #141F39
+        backgroundColor: '#395B7C',
+      },
+      headerTintColor: 'ghostwhite',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 22
+      },
+      headerRight: () => (
+        <View style={{ flexDirection: 'row', }}>
+          <TouchableOpacity
+            onPress={() => alert('This is a button!')}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/infoicon.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Home') }}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/rightarrow.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+
+        </View>
+      ),
+    })
+  },
+  NewDashboard: {
+    screen: NewDashboard,
+    navigationOptions: ({ navigation }) => ({
+      // title screen navigation option
+      title: "NewDashboard",
+      headerStyle: {
+        //#395B7C    #141F39
+        backgroundColor: '#395B7C',
+      },
+      headerTintColor: 'ghostwhite',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        fontSize: 22
+      },
+      headerRight: () => (
+        <View style={{ flexDirection: 'row', }}>
+          <TouchableOpacity
+            onPress={() => alert('This is a button!')}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/infoicon.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => { navigation.navigate('Home') }}
+            style={styles.rightButtonStyle}>
+            <Image
+              source={require('./assets/rightarrow.png')}
+              style={styles.imageinfostyle}
+            />
+          </TouchableOpacity>
+
+        </View>
+      ),
+    })
+  },
+}
+  // {
+    // initialRouteName: 'Home',
+    // headerMode: 'screen',
+    // defaultNavigationOptions: {
+    //   headerStyle: {
+    //     //#395B7C    #141F39
+    //     backgroundColor: '#395B7C',
+    //   },
+    //   headerTintColor: 'ghostwhite',
+    //   headerTitleStyle: {
+    //     fontWeight: 'bold',
+    //     fontSize: 22
+    //   },
+      // headerRight: () => (
+        // <TouchableOpacity
+        //   onPress={() => alert('This is a button!')}
+        //   style={styles.rightButtonStyle}>
+        //   <Image
+        //     source={require('./assets/rightarrow.png')}
+        //     style={styles.imageinfostyle}
+        //   />
+        // </TouchableOpacity>
+
+      // ),
+  //   },
+  // }
+  );
 
 const styles = StyleSheet.create({
   container: {
