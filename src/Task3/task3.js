@@ -2,6 +2,7 @@ import React from 'react'
 import { View, FlatList, Text, TextInput,StyleSheet,ActivityIndicator ,SafeAreaView,TouchableOpacity,Image} from 'react-native'
 import axios from 'axios'
 import Card from './card3'
+import stringsOfApp from '../translations/local'
 export default class ApiPost extends React.Component {
 
 
@@ -64,36 +65,36 @@ export default class ApiPost extends React.Component {
             hidesWhenStopped={true}
         />)}
                 <View style={styles.viewStyle}>
-                    <Text style={styles.headerStyle}> Login Demo </Text>
+                    <Text style={styles.headerStyle}>{stringsOfApp.login}</Text>
                 </View>
                 <View style={{alignItems:'flex-start'}}>
-                    <Text style={styles.nameStyle}>Name</Text>
+                    <Text style={styles.nameStyle}>{stringsOfApp.name}</Text>
                     <TextInput
                         value={this.state.enteredname}
                         style={styles.textInputStyle}
                         onChangeText={(text) => this.setState({ enteredname: text })}
                         returnKeyType='next'
-                        placeholder="Enter your name here">
+                        placeholder={stringsOfApp.placename}>
                     </TextInput>
                 </View>
                 <View >
-                    <Text style={styles.nameStyle}>Password</Text>
+                    <Text style={styles.nameStyle}>{stringsOfApp.password}</Text>
                     <TextInput
                         value={this.state.enteredpassword}
                         style={styles.textInputStyle}
                         onChangeText={(text) => this.setState({ enteredpassword: text })}
                         returnKeyType='next'
-                        placeholder="Enter your password here">
+                        placeholder={stringsOfApp.placepassword}>
                     </TextInput>
                 </View>
                 <View >
-                    <Text style={styles.nameStyle}>Email</Text>
+                    <Text style={styles.nameStyle}>{stringsOfApp.email}</Text>
                     <TextInput
                         value={this.state.enteredemail}
                         style={styles.textInputStyle}
                         onChangeText={(text) => this.setState({ enteredemail: text })}
                         returnKeyType='next'
-                        placeholder="Enter your email here">
+                        placeholder={stringsOfApp.placeemail}>
                     </TextInput>
                 </View>
         {/* <Text style={{width:"100%",paddingLeft:10,paddingRight:10,fontSize:25}}>
@@ -101,10 +102,10 @@ export default class ApiPost extends React.Component {
         </Text> */}
         
        <TouchableOpacity onPress={this.getApi}  style={{height:60,width:200,justifyContent:'center',alignItems:"center",marginTop:30,marginLeft:60,borderRadius:40,backgroundColor:'#1E437D'}}>
-           <Text style={{color:'white',fontSize:25}} > Click It </Text>
+           <Text style={{color:'white',fontSize:25}} >{stringsOfApp.clkit}</Text>
        </TouchableOpacity>
        <TouchableOpacity onPress={this.getDataFromApi}  style={{height:60,width:200,justifyContent:'center',alignItems:"center",marginTop:30,marginLeft:60,borderRadius:40,backgroundColor:'#1E437D'}}>
-           <Text style={{color:'white',fontSize:25}}>See Image </Text>
+           <Text style={{color:'white',fontSize:25}}>{stringsOfApp.seeimg}</Text>
        </TouchableOpacity>
 
       <Image style={{width:150,height:150,borderRadius:20,marginLeft:60,marginTop:45}} source={{uri:this.state.profile_pic}}/>

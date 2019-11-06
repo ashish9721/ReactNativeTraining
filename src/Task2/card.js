@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Dimensions, Text, StyleSheet,ImageBackground } from 'react-native'
+import stringsOfApp from '../translations/local';
 
 export default class Card extends React.Component {
 
@@ -10,10 +11,10 @@ export default class Card extends React.Component {
                 <View style={Styles.component}>
                     <View style={{ justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 ,paddingTop:10,paddingBottom:10}}>
                         
-                        <Text style={{ paddingRight: 5 ,fontSize:20 ,color:'white'}}> UserId : {this.props.userId}</Text>
-                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}> Title : {this.props.title}</Text>
-                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}> Id : {this.props.id} </Text>
-                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}> completed : {this.props.completed}</Text>
+                        <Text style={{ paddingRight: 5 ,fontSize:20 ,color:'white'}}>{stringsOfApp.userid}{this.props.userId}</Text>
+                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}>{stringsOfApp.title}{this.props.title}</Text>
+                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}>{stringsOfApp.id}{this.props.id} </Text>
+                        <Text style={{ paddingRight: 5 ,fontSize:20 , color:'white'}}>{stringsOfApp.complete}{this.props.completed}</Text>
                     </View>
                 </View>
             </View>

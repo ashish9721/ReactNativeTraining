@@ -1,5 +1,6 @@
 import React from 'react';
 import {View,Image,TouchableOpacity,Text,StyleSheet} from 'react-native';
+import stringsOfApp from '../translations/local';
 
 export const FloatingBtn= ()=> {
 
@@ -7,11 +8,11 @@ export const FloatingBtn= ()=> {
       <View style={styles.container}>
           
            <TouchableOpacity style={styles.viewgallery}>
-               <Text style={{color:'#fa9120' ,fontSize:20}} >View Gallery</Text>
+               <Text style={{color:'#fa9120' ,fontSize:20}} >{stringsOfApp.fb1}</Text>
            </TouchableOpacity>
            <TouchableOpacity style={ styles.btn} >
            {/* <Image style={{height:90,width:90}} source={require('./assets/floatButtonImage.png')}/> */}
-           <Text style={{fontSize:0 ,color:'white',fontSize:40}}>+</Text>
+           <Text style={{fontSize:0 ,color:'white',fontSize:40}}>{stringsOfApp.fb2}</Text>
            </TouchableOpacity>
       </View>
     )

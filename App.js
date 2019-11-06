@@ -4,7 +4,8 @@ import {
   View,
   Text,
   StyleSheet,
-  Button,
+  Button, 
+  I18nManager,
   ImageBackground,
   TouchableOpacity,
   ScrollView
@@ -12,6 +13,11 @@ import {
 
 } from 'react-native';
 import Task1 from './src/Task1/task1';
+// import LocalizedStrings from 'react-native-localization';
+
+import * as RNLocalize from "react-native-localize";
+import i18n from "./src/translations/localtranslation";
+import memoize from "lodash.memoize";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Task2 from './src/Task2/task2';
@@ -24,14 +30,15 @@ import Task8 from './src/Task8/task8';
 import Task9 from './src/Task9/task9';
 import Task10 from './src/Task10/task10';
 import Edit from './edit';
+import stringsOfApp from './src/translations/local';
 
 export class App extends React.Component {
 
   constructor() {
     super()
     this.state = {
-      firstname: 'Aashish',
-      lastname: 'Sharma',
+      firstname: stringsOfApp.fname,
+      lastname: stringsOfApp.lname,
       imagepath: '',
       isloading: false,
     }
@@ -45,91 +52,84 @@ export class App extends React.Component {
       lastname: lname,
       imagepath: image
     })
-
   }
-
   render() {
-
-
     return (
       <ImageBackground style={{ width: "100%", height: "100%", flex: 1 }} source={require('./assets/ocean.jpg')}>
         <View style={styles.container}>
           {/* <Task1/> */}
+        
           <View style={styles.usercontainer}>
             <Image onLoad={() => this.setState({ isloading: true })}
               style={{ width: 100, height: 100, borderRadius: 50, borderColor: 'white', borderWidth: 3, margin: 10 }} source={{ uri: this.state.imagepath }} />
-            {!this.state.isloading && <Image source={require('./assets/person-white.png')} style={{ position: 'absolute', marginLeft: 25, marginTop: 10, width: 100, height: 100 }} />}
+            {!this.state.isloading && <Image source={require('./assets/person-white.png')} style={{ position: 'absolute',  borderRadius: 50, marginTop: 10, width: 100, height: 100 }} />}
             <View style={styles.headercontainer}>
-              <Text style={styles.heaedertext}> {this.state.firstname} {this.state.lastname} </Text>
+              <Text style={styles.heaedertext}>{this.state.firstname} {this.state.lastname}</Text>
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Edit', { firstnameofuser: this.state.firstname, lastnameofuser: this.state.lastname, updatemethod: this.updatemethod })}>
                 <View style={styles.btnstyle}>
-                  <Text style={{ color: 'white', fontSize: 25 }}> Edit Button</Text>
+                  <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('editinfo')}</Text>
                 </View>
               </TouchableOpacity>
             </View>
           </View>
-          <ScrollView showsVerticalScrollIndicator='false' style={{ height:300, width: 400, padding: 10, borderRadius: 20, borderColor: 'ghostwhite', borderWidth: 2, paddingLeft: 50,marginBottom:20,}} contentInset={{top:10,left:0,right:0,bottom:50}}>
-
-
+          <ScrollView style={{ height: 300, width: '95%', padding: 10, borderRadius: 20, borderColor: 'ghostwhite', borderWidth: 2, paddingLeft: 50, marginBottom: 20, }} contentInset={{ top: 10, left: 0, right: 0, bottom: 50 }}>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task1')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task One</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task1')}</Text>
               </View>
-
             </TouchableOpacity>
-
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task2')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Two</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task2')}</Text>
               </View>
 
             </TouchableOpacity>
 
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task3')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Three</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task3')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task4')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Four</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task4')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task5')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Five</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task5')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task6')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Six</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task6')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task7')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Seven</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task7')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task8')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Eight</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task8')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task9')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Nine</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task9')}</Text>
               </View>
 
             </TouchableOpacity>
             <TouchableOpacity onPress={() => this.props.navigation.navigate('Task10')}>
               <View style={styles.btnstyle}>
-                <Text style={{ color: 'white', fontSize: 25 }}>Go To Task Ten</Text>
+                <Text style={{ color: 'white', fontSize: 25 }}>{i18n.t('task10')}</Text>
               </View>
 
             </TouchableOpacity>
@@ -586,19 +586,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   heaedertext: {
-    fontSize: 50,
+    fontSize: 30,
     color: 'white',
     tintColor: 'black'
   },
   headercontainer: {
     width: "90%",
-    height: 70,
     shadowOpacity: 0.9,
     shadowColor: 'gray',
     shadowOffset: { width: 5, height: 5 },
     elevation: 10,
     alignItems: 'center',
-    marginBottom: 25
   },
   usercontainer: {
     margin: 10,
@@ -606,8 +604,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 2,
     borderColor: 'ghostwhite',
-    width: 400,
-    height: 280
+    width: '95%',
+   paddingBottom:10
   },
   buttontextstyle: {
     color: 'ghostwhite',

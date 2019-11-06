@@ -7,16 +7,12 @@ import { check, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
 export default class Edit extends React.Component {
     PermissionStatus = 'unavailable' | 'denied' | 'blocked' | 'granted';
-
-
-
-
     constructor(props) {
         super(props)
         this.state = {
             firstname: this.props.navigation.state.params.firstnameofuser,
             lastname: this.props.navigation.state.params.lastnameofuser,
-            imagepath: '',
+            imagepath: './assets/person.png',
             isloading: false
         }
     }
@@ -52,15 +48,9 @@ export default class Edit extends React.Component {
                             ],
                             {cancelable: false},
                           ); 
-                                                 console.warn('The permission has not been requested / is denied but requestable')
-                        console.log(
-                            'The permission has not been requested / is denied but requestable',
-                        );
                         break;
                     case RESULTS.GRANTED:
-                            console.warn('The permission is granted')
                              this.picker()
-                        console.log('The permission is granted');
                         break;
                     case RESULTS.BLOCKED:
                             Alert.alert(
@@ -79,21 +69,19 @@ export default class Edit extends React.Component {
                                 ],
                                 {cancelable: false},
                               );
-                            // request(PERMISSIONS.IOS.PHOTO_LIBRARY).then(result => {
-                            //     // …
-                            //     console.warn('initially permission was blocked but again requesting has been initiated')
-                            // });
-                        console.log('The permission is denied and not requestable anymore');
                         break;
                 }
             })
             .catch(error => {
                 // …
-            });
-
-            
+                console.warn(error)
+            });       
     }
+    runThroughDone=()=>{
+        this.props.navigation.state.params.updatemethod(this.state.firstname.trim(), this.state.lastname.trim(), this.state.imagepath)
+       this.props.navigation.navigate('Home')
 
+    }
     picker=()=>{
         Platform.OS === 'ios' ? ImagePicker.openPicker({
             width: 300,
@@ -118,11 +106,9 @@ export default class Edit extends React.Component {
                 console.warn(image.path)
             })
     }
-
     render() {
         const { navigation } = this.props;
         return (<View style={styles.container}>
-
             <View style={styles.imagecontainer}>
                 <TouchableOpacity onPress={() => {
                    this.Checking()            
@@ -131,16 +117,16 @@ export default class Edit extends React.Component {
                     <Image onLoad={() => this.setState({ isloading: true })}
                         style={{ width: 100, height: 100, borderRadius: 50, borderColor: 'white', borderWidth: 3 }} source={{ uri: this.state.imagepath }} />
                     {!this.state.isloading && <Image source={require('./assets/person.png')} style={{ position: 'absolute', marginLeft: 25, marginTop: 20 }} />}
-
                 </TouchableOpacity>
             </View >
-
-
-
             <View style={styles.txtandtxtinputcontainer}>
-                <Text style={styles.txt}> Enter Your first Name: </Text>
+                <Text style={styles.txt}> Enter Your first Name </Text>
                 <TextInput style={styles.txtinput}
-                    onSubmitEditing={() => { this.secondTextInput.focus(); }}
+                    onSubmitEditing={() => { 
+                        this.setState({
+                            firstname:this.state.firstname
+                        })
+                        this.secondTextInput.focus(); }}
                     returnKeyType="next" value={this.state.firstname}
                     onChangeText={(text) => {
                         this.setState({
@@ -148,34 +134,36 @@ export default class Edit extends React.Component {
                         })
                     }} ></TextInput>
                 <Text style={styles.txt}> Enter Your last Name </Text>
-                <TextInput returnKeyType='next' ref={(input) => { this.secondTextInput = input; }} style={styles.txtinput} value={this.state.lastname} onChangeText={(text) => {
+                <TextInput returnKeyType='done'
+                 ref={(input) => { this.secondTextInput = input; }} 
+                 style={styles.txtinput} value={this.state.lastname} 
+                 onChangeText={(text) => {
                     this.setState({
                         lastname: text
                     })
-                }}></TextInput>
+                }}
+                
+                onSubmitEditing={(text)=>{
+                    this.setState({
+                        lastname:this.state.lastname
+                    })
+                    {  !(this.state.firstname != '' && this.state.lastname != '' ? false : true)  &&  this.runThroughDone() }
+
+                }}
+                ></TextInput>
                 <TouchableOpacity disabled={this.state.firstname != '' && this.state.lastname != '' ? false : true}
                     style={styles.submitButton}
                     onPress={() => {
-                        this.props.navigation.state.params.updatemethod(this.state.firstname, this.state.lastname, this.state.imagepath)
+                        this.props.navigation.state.params.updatemethod(this.state.firstname.trim(), this.state.lastname.trim(), this.state.imagepath)
                         this.props.navigation.navigate('Home')
                     }}>
                     <Text style={styles.txt}> Submit </Text>
                 </TouchableOpacity>
-
             </View>
-
-
         </View>
-
-
         );
     }
-
-
-
 }
-
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
