@@ -28,7 +28,23 @@ componentDidUpdate(prevprops){
                   },3200)
     }
 }
+forceUpdate(){
+    Animated.spring(this.animatedValue, {
+        toValue: 1,
+        friction: 4,
+        delay: 2500
+      }).start();
+  
+      Animated.timing(this.animatedValue2, {
+        toValue: 1,
+        delay: 200,
+        duration: 3000
+      }).start();
 
+      setTimeout( ()=>{
+                  this.props.navigation.navigate("SignUp")
+              },3200)
+}
     constructor(props) {
         super(props);
         this.animatedValue = new Animated.Value(0.5);
